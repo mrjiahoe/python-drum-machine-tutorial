@@ -173,6 +173,12 @@ while run:
     load_text = label_font.render('Load Beat', True, white)
     screen.blit(load_text, (930, HEIGHT - 95))
 
+    # clear board
+    clear_button = pygame.draw.rect(
+        screen, gray, [1150, HEIGHT - 150, 200, 100], 0, 5)
+    clear_text = label_font.render('Clear Board', True, white)
+    screen.blit(clear_text, (1165, HEIGHT - 120))
+
     if beat_changed:
         play_notes()
         beat_changed = False
@@ -203,6 +209,9 @@ while run:
                 beats -= 1
                 for i in range(len(clicked)):
                     clicked[i].pop(-1)
+            elif clear_button.collidepoint(event.pos):
+                clicked = [[-1 for _ in range(beats)]
+                           for _ in range(instruments)]
             for i in range(len(instrument_rects)):
                 if instrument_rects[i].collidepoint(event.pos):
                     active_list[i] *= -1
