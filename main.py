@@ -173,7 +173,7 @@ def draw_load_menu(index):
                 saved_beats[beat][name_index_start:name_index_end], True, white)
             screen.blit(name_text, (240, 100 + beat * 50))
         if 0 <= index < len(saved_beats) and beat == index:
-            beat_index_end = saved_beats[beat].index(', bpmg:')
+            beat_index_end = saved_beats[beat].index(', bpm:')
             loaded_beats = int(
                 saved_beats[beat][name_index_end + 8: beat_index_end])
             bpm_index_end = saved_beats[beat].index(', selected:')
